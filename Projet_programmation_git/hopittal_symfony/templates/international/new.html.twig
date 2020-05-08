@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New International{% endblock %}
+
+{% block body %}
+    <h1>Create new International</h1>
+
+    {{ include('international/_form.html.twig') }}
+
+    <a href="{{ path('international_index') }}">back to list</a>
+{% endblock %}

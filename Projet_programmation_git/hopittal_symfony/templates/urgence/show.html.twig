@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Urgence{% endblock %}
+
+{% block body %}
+    <h1>Urgence</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ urgence.id }}</td>
+            </tr>
+            <tr>
+                <th>Financement</th>
+                <td>{{ urgence.financement }}</td>
+            </tr>
+            <tr>
+                <th>Arrive</th>
+                <td>{{ urgence.arrive ? urgence.arrive|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Heure</th>
+                <td>{{ urgence.heure ? urgence.heure|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Suivi</th>
+                <td>{{ urgence.suivi }}</td>
+            </tr>
+            <tr>
+                <th>Cause</th>
+                <td>{{ urgence.cause }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('urgence_index') }}">back to list</a>
+
+    <a href="{{ path('urgence_edit', {'id': urgence.id}) }}">edit</a>
+
+    {{ include('urgence/_delete_form.html.twig') }}
+{% endblock %}

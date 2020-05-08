@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Urgence index{% endblock %}
+
+{% block body %}
+    <h1>Urgence index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Financement</th>
+                <th>Arrive</th>
+                <th>Heure</th>
+                <th>Suivi</th>
+                <th>Cause</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for urgence in urgences %}
+            <tr>
+                <td>{{ urgence.id }}</td>
+                <td>{{ urgence.financement }}</td>
+                <td>{{ urgence.arrive ? urgence.arrive|date('Y-m-d') : '' }}</td>
+                <td>{{ urgence.heure ? urgence.heure|date('H:i:s') : '' }}</td>
+                <td>{{ urgence.suivi }}</td>
+                <td>{{ urgence.cause }}</td>
+                <td>
+                    <a href="{{ path('urgence_show', {'id': urgence.id}) }}">show</a>
+                    <a href="{{ path('urgence_edit', {'id': urgence.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('urgence_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FichePatient index{% endblock %}
+
+{% block body %}
+    <h1>FichePatient index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Statut</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fiche_patient in fiche_patients %}
+            <tr>
+                <td>{{ fiche_patient.id }}</td>
+                <td>{{ fiche_patient.statut }}</td>
+                <td>{{ fiche_patient.createdAt ? fiche_patient.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('fiche_patient_show', {'id': fiche_patient.id}) }}">show</a>
+                    <a href="{{ path('fiche_patient_edit', {'id': fiche_patient.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('fiche_patient_new') }}">Create new</a>
+{% endblock %}
