@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maternite index{% endblock %}
+
+{% block body %}
+    <h1>Maternite index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Debut</th>
+                <th>Accouchement</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for maternite in maternites %}
+            <tr>
+                <td>{{ maternite.id }}</td>
+                <td>{{ maternite.debut ? maternite.debut|date('Y-m-d') : '' }}</td>
+                <td>{{ maternite.accouchement ? maternite.accouchement|date('Y-m-d') : '' }}</td>
+                <td>{{ maternite.description }}</td>
+                <td>
+                    <a href="{{ path('maternite_show', {'id': maternite.id}) }}">show</a>
+                    <a href="{{ path('maternite_edit', {'id': maternite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('maternite_new') }}">Create new</a>
+{% endblock %}

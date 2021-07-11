@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit International{% endblock %}
+
+{% block body %}
+    <h1>Edit International</h1>
+
+    {{ include('international/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('international_index') }}">back to list</a>
+
+    {{ include('international/_delete_form.html.twig') }}
+{% endblock %}

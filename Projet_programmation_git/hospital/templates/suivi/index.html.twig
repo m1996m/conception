@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suivi index{% endblock %}
+
+{% block body %}
+    <h1>Suivi index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Content</th>
+                <th>Recommandation</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for suivi in suivis %}
+            <tr>
+                <td>{{ suivi.id }}</td>
+                <td>{{ suivi.content }}</td>
+                <td>{{ suivi.recommandation }}</td>
+                <td>{{ suivi.createdAt ? suivi.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('suivi_show', {'id': suivi.id}) }}">show</a>
+                    <a href="{{ path('suivi_edit', {'id': suivi.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('suivi_new') }}">Create new</a>
+{% endblock %}

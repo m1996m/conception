@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suivi{% endblock %}
+
+{% block body %}
+    <h1>Suivi</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ suivi.id }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ suivi.content }}</td>
+            </tr>
+            <tr>
+                <th>Recommandation</th>
+                <td>{{ suivi.recommandation }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ suivi.createdAt ? suivi.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('suivi_index') }}">back to list</a>
+
+    <a href="{{ path('suivi_edit', {'id': suivi.id}) }}">edit</a>
+
+    {{ include('suivi/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}International{% endblock %}
+
+{% block body %}
+    <h1>International</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ international.id }}</td>
+            </tr>
+            <tr>
+                <th>Nationalite</th>
+                <td>{{ international.nationalite }}</td>
+            </tr>
+            <tr>
+                <th>Maladie</th>
+                <td>{{ international.maladie }}</td>
+            </tr>
+            <tr>
+                <th>Debut</th>
+                <td>{{ international.debut ? international.debut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Financement</th>
+                <td>{{ international.financement }}</td>
+            </tr>
+            <tr>
+                <th>Arrive</th>
+                <td>{{ international.arrive ? international.arrive|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('international_index') }}">back to list</a>
+
+    <a href="{{ path('international_edit', {'id': international.id}) }}">edit</a>
+
+    {{ include('international/_delete_form.html.twig') }}
+{% endblock %}

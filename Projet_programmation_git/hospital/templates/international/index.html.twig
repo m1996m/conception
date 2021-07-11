@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}International index{% endblock %}
+
+{% block body %}
+    <h1>International index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nationalite</th>
+                <th>Maladie</th>
+                <th>Debut</th>
+                <th>Financement</th>
+                <th>Arrive</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for international in internationals %}
+            <tr>
+                <td>{{ international.id }}</td>
+                <td>{{ international.nationalite }}</td>
+                <td>{{ international.maladie }}</td>
+                <td>{{ international.debut ? international.debut|date('Y-m-d') : '' }}</td>
+                <td>{{ international.financement }}</td>
+                <td>{{ international.arrive ? international.arrive|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('international_show', {'id': international.id}) }}">show</a>
+                    <a href="{{ path('international_edit', {'id': international.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('international_new') }}">Create new</a>
+{% endblock %}

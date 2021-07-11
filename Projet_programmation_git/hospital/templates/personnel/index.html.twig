@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Personnel index{% endblock %}
+
+{% block body %}
+    <h1>Personnel index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adresse</th>
+                <th>DateNaissance</th>
+                <th>Genre</th>
+                <th>Telephone</th>
+                <th>Profession</th>
+                <th>Fonction</th>
+                <th>Specialite</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for personnel in personnels %}
+            <tr>
+                <td>{{ personnel.id }}</td>
+                <td>{{ personnel.nom }}</td>
+                <td>{{ personnel.prenom }}</td>
+                <td>{{ personnel.adresse }}</td>
+                <td>{{ personnel.dateNaissance ? personnel.dateNaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ personnel.genre }}</td>
+                <td>{{ personnel.telephone }}</td>
+                <td>{{ personnel.profession }}</td>
+                <td>{{ personnel.fonction }}</td>
+                <td>{{ personnel.specialite }}</td>
+                <td>{{ personnel.image }}</td>
+                <td>
+                    <a href="{{ path('personnel_show', {'id': personnel.id}) }}">show</a>
+                    <a href="{{ path('personnel_edit', {'id': personnel.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('personnel_new') }}">Create new</a>
+{% endblock %}
