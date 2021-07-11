@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FicheSuivi index{% endblock %}
+
+{% block body %}
+    <h1>FicheSuivi index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Contenu</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fiche_suivi in fiche_suivis %}
+            <tr>
+                <td>{{ fiche_suivi.id }}</td>
+                <td>{{ fiche_suivi.contenu }}</td>
+                <td>{{ fiche_suivi.createdAt ? fiche_suivi.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('fiche_suivi_show', {'id': fiche_suivi.id}) }}">show</a>
+                    <a href="{{ path('fiche_suivi_edit', {'id': fiche_suivi.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('fiche_suivi_new') }}">Create new</a>
+{% endblock %}

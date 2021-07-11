@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FicheSuivi{% endblock %}
+
+{% block body %}
+    <h1>FicheSuivi</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fiche_suivi.id }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ fiche_suivi.contenu }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ fiche_suivi.createdAt ? fiche_suivi.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('fiche_suivi_index') }}">back to list</a>
+
+    <a href="{{ path('fiche_suivi_edit', {'id': fiche_suivi.id}) }}">edit</a>
+
+    {{ include('fiche_suivi/_delete_form.html.twig') }}
+{% endblock %}

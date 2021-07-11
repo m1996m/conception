@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RendezVous index{% endblock %}
+
+{% block body %}
+    <h1>RendezVous index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rendez_vous in rendez_vouses %}
+            <tr>
+                <td>{{ rendez_vous.id }}</td>
+                <td>{{ rendez_vous.type }}</td>
+                <td>
+                    <a href="{{ path('rendez_vous_show', {'id': rendez_vous.id}) }}">show</a>
+                    <a href="{{ path('rendez_vous_edit', {'id': rendez_vous.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('rendez_vous_new') }}">Create new</a>
+{% endblock %}
