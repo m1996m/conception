@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>indexPersonnel</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Start Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <!-- List of Text Items -->
+<ion-list >
+  <ion-list-header>
+    Personnels
+  </ion-list-header>
+  
+  <ion-item *ngFor="let personel of personels; let i=index">
+    <ion-avatar slot="start">
+      <img src="assets/images/t1.jpg">
+    </ion-avatar>
+    <ion-label>
+      <h2>{{personel?.nom}} {{personel?.prenom}}</h2>
+      <h3>{{personel?.profession}}</h3>
+      <p (click)="presentModal(personel)">Plus de detail</p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+</ion-content>

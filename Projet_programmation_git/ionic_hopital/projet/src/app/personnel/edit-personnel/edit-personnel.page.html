@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>creation personnel</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="form" (ngSubmit)="Enregistrer()">
+        <div class="row">
+            <div class="col-md-6">
+              <ion-item>
+                <ion-label>Nom</ion-label><br>
+                <ion-input type="text" formControlName="nom" class="form-control"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Prenom</ion-label>
+                <ion-input type="text" formControlName="nom"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>date de naissance</ion-label>
+                <ion-input type="date" formControlName="dateNaissance"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Genre</ion-label>
+                <ion-select placeholder="genre" formControlName="genre">
+                  <ion-select-option value="F">Femme</ion-select-option>
+                  <ion-select-option value="H">Homme</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+              </ion-item>
+              <ion-item>
+                <ion-label>Adresse</ion-label>
+                <ion-input type="text" formControlName="adresse"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Tel</ion-label>
+                <ion-input type="number" formControlName="telephone"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Profession</ion-label>
+                <ion-input type="text" formControlName="profession"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Fonction</ion-label>
+                <ion-input type="text" formControlName="fonction"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Specialité</ion-label>
+                <ion-select placeholder="specialite" formControlName="fonction">
+                  <ion-select-option ></ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label>Image</ion-label>
+                <ion-input type="file" formControlName="image"></ion-input>
+              </ion-item>
+              <ion-button type="submit" shape="round">Enregistrer</ion-button>
+            </div>
+    
+        </div>
+    </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detail personnel</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-card>
+    <img src="assets/images/t1.jpg" />
+    <ion-card-header>
+      <ion-card-subtitle>{{personne.profession}}</ion-card-subtitle>
+      <ion-card-title>{{personne.prenom}} {{personne.nom}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h5 >{{personne.adresse}}</h5>
+      <h5 >{{personne.email}}</h5>
+      <h5>{{personne.telephone}}</h5>
+      <h5>{{personne.specialite}}</h5>
+      <h5>
+        <ion-button color="secondary"><a routerLink="/edit-personnel/{{personne.id}}">Editer</a></ion-button>
+        <ion-button color="danger" (click)="delete(personne.id)">Supprimer</ion-button>
+      </h5>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
